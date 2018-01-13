@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Button, View, StyleSheet, Text, TouchableHighlight } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
+import BleManager from 'react-native-ble-manager';
+
 
 export default class Home extends Component {
+    componentDidMount(){
+        BleManager.start({showAlert: false});
+
+        //you must conn
+    }
+
     render(){
         return(
             <View style={styles.textDisplay}>
@@ -20,6 +29,7 @@ export default class Home extends Component {
                 </Text>
                 <TouchableHighlight
                     style={styles.button}
+                    onPress = {() => this.props.navigation.navigate('Doctor', {form: 'doctor'})}
                 >
                     <Text> Doctor </Text>
                 </TouchableHighlight>

@@ -9,7 +9,9 @@
   "dependencies": {
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-ble-manager": "^6.2.6",
     "react-native-bluetooth-serial": "^1.0.0-rc1",
+    "react-native-timer-mixin": "^0.11.0",
     "react-navigation": "^1.0.0-beta.26"
   },
   "devDependencies": {

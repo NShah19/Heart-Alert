@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
+        width: 300,
         borderColor: '#48bbec'
     },
     container: {
