@@ -2,7 +2,7 @@ from mongoengine import *
 import random
 import string
 
-connect('mongoengine_test', host='localhost', port=27017)
+connect('heartAlert_db', host='localhost', port=27017)
 
 def getAccessCode():
     return(''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(8)))
@@ -22,5 +22,9 @@ class MedicalInfo(Document):
     familyHistory = BooleanField()
     medications = ListField(StringField(max_length=20))
 
-x = getAccessCode()
-print(x)
+post_1 = Person(
+    name = "Nilay",
+    phone = 420696969
+)
+
+post_1.save()
