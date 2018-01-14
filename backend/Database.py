@@ -74,28 +74,40 @@ def setUpMed():
     meds.save()
     return 'OK'
 
-@app.route('/name', methods=['POST'])
-def retrieveName():
+@app.route('button', methods=['POST'])
+def buttonPress:
+    print('Button Pressed')
+
+
+@app.route('/name', methods=['POST, GET'])
+def retrieveNameAndPostMedInfo():
     post_data = request.get_json()
     print(post_data)
     name = post_data['name']
+    key = findKey(name)
+    print(key)
+    info = findMedInfo(key)
     return name
+
+@app.route('/name', methods=['GET'])
+def sendMedInfo():
+    return 
+
+def findKey(fullName):
+    return User.objects(name = fullName).key
 
 def getAccessCode():
     return(''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(8)))
 
-def findMedInfo(uniqueCode):
-    return User.objects(accessCode = uniqueCode)
+def findMedInfo(foundKey):
+    return MedicalInfo.objects(key = foundKey)
 
-<<<<<<< HEAD
 def getAddress(user_name):
     return User.objects(accessCode = uniqueCode).address
 
-def getAccessCode(user_name):
+def retrieveAccessCode(user_name):
     return User.objects(accessCode = uniqueCode).accessCode
 
-=======
->>>>>>> 439cb05e1dca3b93cdba9135a1eb65ba434963dd
 
 
 #create collection

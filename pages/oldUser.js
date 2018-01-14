@@ -1,13 +1,46 @@
 import React, { Component } from 'react';
 import { Button, View, StyleSheet, Text, TouchableHighlight, TextInput } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
+import BleManager from 'react-native-ble-manager';
+
 
 export default class OldUser extends Component {
     constructor(){
         super()
 
         this.state = {
-            name: null
+            name: null,
+            scanned: false
         }
+    }
+
+    //2EEF3475-D26D-290F-F5B6-4EB2EBE8D47E
+    startScan(){
+        /*BleManager.retrieveServices('2EEF3475-D26D-290F-F5B6-4EB2EBE8D47E').then((info) => {
+            service = '180D'
+            characteristic = '2A37'
+        })*/
+        if(!this.state.scanned){
+            BleManager.scan(['180D'], 100000, true).then((results)=>{
+                this.setState({scanned:true})
+                if(this.state.scanned){
+                    //alert('Scan started')
+                    BleManager.connect('2EEF3475-D26D-290F-F5B6-4EB2EBE8D47E').then(() => {
+                        //alert('Connected!')
+                    })
+                    .catch((error) => {
+                        //alert(error)
+                    })
+                }
+            })
+        }
+    }
+
+    //think of using the "startNotification" method
+    componentDidMount(){
+        BleManager.start({showAlert: false});
+        this.startScan();
+        //you might have to scan before you connect to peripheral
     }
 
     async sendName(){
