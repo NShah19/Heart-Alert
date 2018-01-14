@@ -68,9 +68,6 @@ def getAccessCode():
 def findMedInfo(uniqueCode):
     return User.objects(accessCode = uniqueCode)
 
-def getName(user_name):
-    return user_name
-
 def getAddress(user_name):
     return User.objects(accessCode = uniqueCode).address
 
