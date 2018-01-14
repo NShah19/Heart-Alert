@@ -15,13 +15,29 @@ export default class Home extends Component {
     render(){
         return(
             <View style={styles.textDisplay}>
-                <Text style={{fontSize: 30}}>
-                    Who are you?
+                <Text style={{fontSize: 20}}>
+                    First Time User?
                 </Text>
             <View style={styles.display}>
                 <TouchableHighlight
                     style={styles.button}
                     onPress = {() => this.props.navigation.navigate('User', {form: 'user'})}
+                >
+                    <Text> Patient </Text>
+                </TouchableHighlight>
+                <Text>
+                     
+                </Text>
+            </View>
+            <View style = {styles.display}>
+                <Text style={{fontSize: 20}}>
+                    If Not,
+                </Text>
+            </View>
+            <View style = {styles.display}>
+            <TouchableHighlight
+                    style={styles.button}
+                    onPress = {() => this.props.navigation.navigate('OldUser', {form: 'oldUser'})}
                 >
                     <Text> Patient </Text>
                 </TouchableHighlight>
@@ -45,13 +61,13 @@ const styles = StyleSheet.create({
         padding: 60,
         justifyContent: 'center',
         flexDirection: 'row',
-        paddingLeft: 53
+        paddingLeft: 40
     },
     textDisplay: {
-        padding: 100,
+        padding: 90,
         justifyContent: 'center',
         flexDirection: 'column',
-        paddingLeft: 93
+        paddingLeft: 109
     },
     button: {
         alignItems: 'center',

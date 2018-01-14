@@ -15,7 +15,29 @@ export default class MedInfo extends Component {
         }
     }
 
+    async setUpUser(){
+        try {
+            var response = await fetch('http://127.0.0.1:5000/med', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    },
+                body: JSON.stringify({
+                        name: this.state.name,
+                        number: this.state.number,
+                        email: this.state.email
+                })
+            }
+            )
+        }
+        catch(error){
+            alert(error);
+        }
+    }
+
     buttonPress = () => {
+        this.setUpUser()
         this.props.navigation.navigate('Home', {form: 'home'})
         //alert("You are now signed up for alerts!")
     }

@@ -5,6 +5,7 @@ import Patient from '../pages/patient'
 import User from '../pages/user'
 import MedInfo from '../pages/medInfo'
 import Doctor from '../pages/doctor'
+import OldUser from '../pages/oldUser'
 
 export default Display = StackNavigator({
     Home: {
@@ -22,6 +23,9 @@ export default Display = StackNavigator({
     MedInfo: {
         screen: MedInfo,
     },  
+    OldUser: {
+        screen: OldUser,
+    }
     },
 {
     headermode: 'none',
