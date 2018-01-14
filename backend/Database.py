@@ -9,11 +9,17 @@ connect('heartAlert_db' )
 @app.route('/user',  methods=['POST'])
 def setUpUser():
     post_data = request.get_json()
-    newPerson = Person()
-    newPerson.name = post_data['name']
-    newPerson.phone = post_data['number']
-    User.basicInfo = newPerson
-    User.email = post_data['email']
+    user = User()
+    user.name = post_data[name]
+    user.phone = post_data[number]
+    user.email = post_data[email]
+    
+    #store person in database
+
+@app.route('/contact', methods=['POST'])
+def setupContact():
+    post_data = request.get_json()
+    
 
 def getAccessCode():
     return(''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(8)))
@@ -23,12 +29,17 @@ def findMedInfo(uniqueCode):
         if code.accessCode == uniqueCode:
             return 
 
-class Person(Document):
-    name = StringField(required=True, max_length=70)
-    phone = IntField(required=True, max_length=10)
+class Contact(Document):
+    name1 = StringField(required=True, max_length=70)
+    phone1 = IntField(required=True, max_length=10)
+    name2 = StringField(required=True, max_length=70)
+    phone2 = IntField(required=True, max_length=10)
+    name3 = StringField(required=True, max_length=70)
+    phone3 = IntField(required=True, max_length=10)
 
 class User(Document):
-    basicInfo = ReferenceField(Person)
+    name = StringField(required=True, max_length=70)
+    phone = IntField(required=True, max_length=10)
     email = EmailField()
     accessCode = IntField(required=True, max_length=8)
     
