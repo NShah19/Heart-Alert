@@ -5,7 +5,7 @@ import random
 import string
 
 app = Flask(__name__)
-connect('heartAler_db', port = os.environ.get('PORT', MONGODB_URI))
+connect('heartAlert_db', port = process.env.PORT)
 code = None
 
 class Contact(Document):
