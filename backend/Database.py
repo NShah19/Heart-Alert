@@ -5,7 +5,7 @@ import random
 import string
 
 app = Flask(__name__)
-connect('heartAlert_db', port = process.env.PORT)
+connect('heartAlert_db', port = 'process.env.PORT')
 code = None
 
 class Contact(Document):
