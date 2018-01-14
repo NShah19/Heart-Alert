@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Button, View, StyleSheet, Text, TouchableHighlight, TextInput } from 'react-native';
 
 export default class User extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         
         this.state = {
             name: null,
@@ -14,18 +14,16 @@ export default class User extends Component {
 
     async setUpUser(){
         try {
-            var response = await fetch('localhost:5000/user', {
+            var response = await fetch('http://127.0.0.1:5000/user', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                     },
                 body: JSON.stringify({
-                    user:{
                         name: this.state.name,
                         number: this.state.number,
                         email: this.state.email
-                    }
                 })
             }
             )
@@ -33,6 +31,27 @@ export default class User extends Component {
         catch(error){
             alert(error);
         }
+    }
+
+
+    /*async setUpUser(){
+        try {
+            var resposne = await fetch('http://127.0.0.1:5000/user', {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+        }
+        catch(error){
+            alert(error)
+        }
+    }*/
+
+    submit() {
+        this.setUpUser();
+        this.props.navigation.navigate('Patient', {form: 'patient'})
     }
 
     render(){
@@ -62,7 +81,7 @@ export default class User extends Component {
                 </TextInput>
                 <Button
                     title = "Continue"
-                    onPress = {() => this.props.navigation.navigate('Patient', {form: 'patient'})}
+                    onPress = {() => this.submit()}
                 />
                 </View>
             </View>

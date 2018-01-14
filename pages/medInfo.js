@@ -4,6 +4,17 @@ import { NavigationActions } from 'react-navigation'
 
 export default class MedInfo extends Component {
 
+    constructor(){
+        super();
+        
+        this.state = {
+            age: null,
+            past: null,
+            family: null,
+            meds: null
+        }
+    }
+
     buttonPress = () => {
         this.props.navigation.navigate('Home', {form: 'home'})
         //alert("You are now signed up for alerts!")
@@ -21,6 +32,7 @@ export default class MedInfo extends Component {
             </Text>
             <TextInput
                 style={styles.input}
+                onChangeText = {(text)=> this.setState({age: text})}
                 placeholder="Age"
             >
             </TextInput>
@@ -29,6 +41,7 @@ export default class MedInfo extends Component {
             </Text>
             <TextInput
                 style={styles.input}
+                onChangeText = {(text)=> this.setState({past: text})}
                 placeholder="Enter Yes or No"
             >
             </TextInput>
@@ -37,6 +50,7 @@ export default class MedInfo extends Component {
             </Text>
             <TextInput
                 style={styles.input}
+                onChangeText = {(text)=> this.setState({family: text})}
                 placeholder="Enter Yes or No"
             >
             </TextInput>
@@ -45,6 +59,7 @@ export default class MedInfo extends Component {
             </Text>
             <TextInput
                 style={styles.input}
+                onChangeText = {(text)=> this.setState({meds: text})}
                 placeholder="List Medications separated by commas"
             >
             </TextInput>
