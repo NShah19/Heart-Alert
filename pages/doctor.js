@@ -4,20 +4,6 @@ import BleManager from 'react-native-ble-manager';
 import TimerMixin from 'react-timer-mixin';
 
 export default class Doctor extends Component {
-    constructor(){
-        super()
-
-        this.handleDiscoverPeripheral = this.handleDiscoverPeripheral.bind(this);
-        this.handleStopScan = this.handleStopScan.bind(this);
-        this.handleUpdateValueForCharacteristic = this.handleUpdateValueForCharacteristic.bind(this);
-        this.handleDisconnectedPeripheral = this.handleDisconnectedPeripheral.bind(this);
-        this.handleAppStateChange = this.handleAppStateChange.bind(this);
-    }
-    componentDidMount(){
-        AppState.addEventListener('change', )
-        BleManager.start({showAlert: false});
-
-    }
 
     render(){
         return(

@@ -2,6 +2,39 @@ import React, { Component } from 'react';
 import { Button, View, StyleSheet, Text, TouchableHighlight, TextInput } from 'react-native';
 
 export default class User extends Component {
+    constructor(){
+        super();
+        
+        this.state = {
+            name: null,
+            number: null,
+            email: null
+        }
+    }
+
+    async setUpUser(){
+        try {
+            var response = await fetch('localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    },
+                body: JSON.stringify({
+                    user:{
+                        name: this.state.name,
+                        number: this.state.number,
+                        email: this.state.email
+                    }
+                })
+            }
+            )
+        }
+        catch(error){
+            alert(error);
+        }
+    }
+
     render(){
         return(
             <View style={styles.container}>
@@ -12,16 +45,19 @@ export default class User extends Component {
                 <TextInput
                     style={styles.input}
                     placeholder="Full Name"
+                    onChangeText = {(text)=> this.setState({name: text})}
                 >
                 </TextInput>
                 <TextInput
                     style={styles.input}
                     placeholder="Primary Phone Number"
+                    onChangeText = {(text)=> this.setState({number: text})}
                 >
                 </TextInput>
                 <TextInput
                     style={styles.input}
                     placeholder="Email"
+                    onChangeText = {(text)=> this.setState({email: text})}
                 >
                 </TextInput>
                 <Button

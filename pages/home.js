@@ -8,7 +8,8 @@ export default class Home extends Component {
     componentDidMount(){
         BleManager.start({showAlert: false});
 
-        //you must conn
+        //you might have to scan before you connect to peripheral
+        
     }
 
     render(){
