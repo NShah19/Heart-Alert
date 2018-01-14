@@ -20,14 +20,14 @@ class Contact(Document):
 class User(Document):
     name = StringField(max_length=70)
     phone = IntField(max_length=10)
-    email = EmailField()
+    address = StringField()
     accessCode = StringField(max_length=8)
     key = IntField(min_value=1)
     
 class MedicalInfo(Document):
     age = IntField( max_length=3)
-    userHistory = BooleanField()
-    familyHistory = BooleanField()
+    userHistory = StringField(max_length=3)
+    familyHistory = StringField(max_length=3)
     medications = StringField()
     key = IntField(min_value=1)
 
@@ -38,7 +38,7 @@ def setUpUser():
     person = User(
     name = post_data['name'],
     phone = post_data['number'],
-    email = post_data['email'],
+    address = post_data['address'],
     accessCode = getAccessCode(),
     key = User.objects.count()+1)
     person.save()
@@ -78,7 +78,8 @@ def setUpMed():
 def retrieveName():
     post_data = request.get_json()
     print(post_data)
-    return 'OK'
+    name = post_data['name']
+    return name
 
 def getAccessCode():
     return(''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(8)))
