@@ -24,9 +24,10 @@ export default class MedInfo extends Component {
                     'Content-Type': 'application/json',
                     },
                 body: JSON.stringify({
-                        name: this.state.name,
-                        number: this.state.number,
-                        email: this.state.email
+                        age: this.state.age,
+                        past: this.state.past,
+                        family: this.state.family,
+                        meds: this.state.meds
                 })
             }
             )

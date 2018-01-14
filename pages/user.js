@@ -23,7 +23,7 @@ export default class User extends Component {
                 body: JSON.stringify({
                         name: this.state.name,
                         number: this.state.number,
-                        email: this.state.email
+                        address: this.state.address
                 })
             }
             )
@@ -75,8 +75,8 @@ export default class User extends Component {
                 </TextInput>
                 <TextInput
                     style={styles.input}
-                    placeholder="Email"
-                    onChangeText = {(text)=> this.setState({email: text})}
+                    placeholder="Address"
+                    onChangeText = {(text)=> this.setState({address: text})}
                 >
                 </TextInput>
                 <Button
